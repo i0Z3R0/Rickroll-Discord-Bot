@@ -46,7 +46,7 @@ async def help(ctx):
     ctx.send("Commands: !rickroll Rick rolls the servers \n !unroll Deletes all rick roll channels")
     print("Help has been sent")
 
-@client.command()
+@client.command(pass_context=True)
 async def ping(ctx):
     await ctx.send(f'Pong! {bot.latency}!')
 
