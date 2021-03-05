@@ -1,4 +1,3 @@
-import string
 import discord
 import asyncio
 from discord.ext import commands
@@ -26,7 +25,6 @@ async def rickroll(ctx):
         await currentChannel.send("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
         await currentChannel.send("https://cdn.discordapp.com/attachments/817018809701236746/817019597516963860/Rick_Roll_No_Watermark.gif")
         createdChannels.append(currentChannel)
-        #await currentChannel.send(i.upper())
     print(f'Completed Rick Rolling Text Channels')
     rickrollCat2 = await ctx.guild.create_category("Rick Roll")
     createdChannels.append(rickrollCat2)
@@ -36,7 +34,6 @@ async def rickroll(ctx):
 
 @client.command(pass_context=True)
 async def unroll(ctx):
-    #print(createdChannels)
     for j in createdChannels:
         try:
             await j.delete()
@@ -48,5 +45,9 @@ async def unroll(ctx):
 async def help(ctx):
     ctx.send("Commands: !rickroll Rick rolls the servers \n !unroll Deletes all rick roll channels")
     print("Help has been sent")
+
+@client.command()
+async def ping(ctx):
+    await ctx.send(f'Pong! {bot.latency}!')
 
 client.run(token, bot = True)
